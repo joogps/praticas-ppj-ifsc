@@ -927,7 +927,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: addf0c8bb1b7f40619d71bee0cb5e56f, type: 3}
+  - {fileID: 2100000, guid: 7804d3e7100584bdfbfda54c7d68bead, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -995,7 +995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a2427076f0b1c47887651e33c86d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 44785037}
+  target: {fileID: 702375002}
   planet: 10
 --- !u!135 &317298359
 SphereCollider:
@@ -2822,7 +2822,7 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 50
+  m_FontSize: 44
   m_FontStyle: 1
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: addf0c8bb1b7f40619d71bee0cb5e56f, type: 3}
@@ -3774,7 +3774,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: addf0c8bb1b7f40619d71bee0cb5e56f, type: 3}
+  - {fileID: 2100000, guid: 3b35aec8f156d4349b27258faef8267f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3936,7 +3936,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2000, y: 2000}
+  m_SizeDelta: {x: 4000, y: 4000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1870875701
 MonoBehaviour:
