@@ -1356,7 +1356,7 @@ MonoBehaviour:
   player: {fileID: 0}
   gameState: 0
   score: 0
-  canBeatLevel: 0
+  canBeatLevel: 1
   beatLevelScore: 10
   mainCanvas: {fileID: 56042731}
   mainScoreDisplay: {fileID: 1965134088}
