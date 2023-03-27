@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -8593330352958315347}
   - component: {fileID: 9112259451140718228}
   m_Layer: 0
-  m_Name: "Moeda perec\xEDvel"
+  m_Name: PhysicalCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
