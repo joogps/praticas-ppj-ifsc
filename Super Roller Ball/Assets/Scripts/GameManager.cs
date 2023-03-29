@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
 	public int beatLevelScore=0;
 
 	public GameObject mainCanvas;
+	public Text generalScoreDisplay;
 	public Text mainScoreDisplay;
 	public GameObject gameOverCanvas;
 	public Text gameOverScoreDisplay;
@@ -106,8 +107,8 @@ public class GameManager : MonoBehaviour {
 	public void Collect(int amount) {
 		score += amount;
 		if (canBeatLevel) {
-			// mainScoreDisplay.text = score.ToString () + " of "+beatLevelScore.ToString ();
-			mainScoreDisplay.text = score.ToString();
+			mainScoreDisplay.text = score.ToString () + " of "+beatLevelScore.ToString ();
+			generalScoreDisplay.text = score.ToString();
 		} else {
 			mainScoreDisplay.text = score.ToString ();
 		}
