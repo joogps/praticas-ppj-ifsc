@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Giro : MonoBehaviour
 {
-    public int velocidadeX, velocidadeY, velocidadeZ;
+    public bool randomizar;
+    public float velocidadeX, velocidadeY, velocidadeZ;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (randomizar) {
+            velocidadeX*= Random.value;
+            velocidadeY*= Random.value;
+            velocidadeZ*= Random.value;
+        }
     }
 
     // Update is called once per frame

@@ -457,9 +457,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426f1eb8a71364ed78ee216ab057685f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadeX: 0
-  velocidadeY: 0
-  velocidadeZ: 0
+  randomizar: 1
+  velocidadeX: 10
+  velocidadeY: 10
+  velocidadeZ: 10
 --- !u!114 &-6446411024137130980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,8 +474,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidade: 0.3
-  x: 0
-  y: 1
+  x: 1
+  y: 0
   z: 0
 --- !u!1 &3090473155602535606
 GameObject:
