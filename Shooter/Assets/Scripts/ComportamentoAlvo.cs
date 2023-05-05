@@ -11,6 +11,8 @@ public class ComportamentoAlvo : MonoBehaviour
 	// explode quando atingido?
 	public GameObject prefabExplosao;
 
+	private float destroyTime;
+
 	// quando colidir com outro gameObject...
 	void OnCollisionEnter (Collision newCollision)
 	{
@@ -32,11 +34,17 @@ public class ComportamentoAlvo : MonoBehaviour
 				GameManager.gm.targetHit (pontuacao, tempoExtra);
 			}
 				
-			// destrua o projétil
-			Destroy (newCollision.gameObject);
-				
-			// autodestrua-se
-			Destroy (gameObject);
+            Destroy (newCollision.gameObject);
+			this.GetComponent<Animator>().SetTrigger("Exit");
+			// destroyTime = Time.time + 3;
 		}
 	}
+
+	public void AlertObservers(string message)
+    {
+        if (message.Equals("AnimationEnded"))
+        {
+			Destroy (gameObject);
+        }
+    }
 }

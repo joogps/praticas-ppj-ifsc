@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Movimento : MonoBehaviour
 {
-    public float velocidade = 1;
+    public float amplitude = 1;
+    public float offset = 0;
 
     public bool x = false;
     public bool y = false;
@@ -13,16 +14,17 @@ public class Movimento : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        x = Random.value > 0.6;
-        y = Random.value > 0.6;
-        z = Random.value > 0.6;
+        // x = Random.value > 0.6;
+        // y = Random.value > 0.6;
+        // z = Random.value > 0.6;
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 direction = x ? Vector3.right : (y ? Vector3.up : (z ? Vector3.back : Vector3.zero));
-        float vel = velocidade * Mathf.Cos(Time.timeSinceLevelLoad);
+        float vel = amplitude * Mathf.Cos((Time.timeSinceLevelLoad+offset)*Mathf.PI);
+
         if (direction != Vector3.zero) {
             gameObject.transform.transform.Translate(direction * vel, Space.World);
         }

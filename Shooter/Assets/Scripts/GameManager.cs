@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour {
 		gameIsOver = true;
 
 		// repurpose the timer to display a message to the player
-		mainTimerDisplay.text = "GAME OVER";
+		// mainTimerDisplay.text = "GAME OVER";
 
 		// activate the gameOverScoreOutline gameObject, if it is set 
 		if (gameOverScoreOutline)
@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour {
 		gameIsOver = true;
 
 		// repurpose the timer to display a message to the player
-		mainTimerDisplay.text = "LEVEL COMPLETE";
+		// mainTimerDisplay.text = "LEVEL COMPLETE";
 
 		// activate the gameOverScoreOutline gameObject, if it is set 
 		if (gameOverScoreOutline)
@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour {
 	{
 		// increase the score by the scoreAmount and update the text UI
 		score += scoreAmount;
-		mainScoreDisplay.text = score.ToString ();
+		mainScoreDisplay.text = score.ToString()+"/"+beatLevelScore.ToString();
 		
 		// increase the time by the timeAmount
 		currentTime += timeAmount;
@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour {
 			currentTime = 0.0f;
 
 		// update the text UI
-		mainTimerDisplay.text = currentTime.ToString ("0.00");
+		mainTimerDisplay.text = currentTime.ToString("0.00");
 	}
 
 	// public function that can be called to restart the game
