@@ -510,7 +510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pontuacao: 1
   tempoExtra: 0
-  prefabExplosao: {fileID: 0}
+  prefabExplosao: {fileID: 998933271389986519, guid: a7030fec0fc3f4fe68c7306f85111cf7, type: 3}
 --- !u!1 &3090473155602535606
 GameObject:
   m_ObjectHideFlags: 0

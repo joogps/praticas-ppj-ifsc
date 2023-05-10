@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour {
 
 	private float currentTime;
 
+	public GameObject boss;
+	public GameObject mainGrid;
+
 	// setup the game
 	void Start () {
 
@@ -76,6 +79,7 @@ public class GameManager : MonoBehaviour {
 	void EndGame() {
 		// game is over
 		gameIsOver = true;
+		Destroy(mainGrid);
 
 		// repurpose the timer to display a message to the player
 		// mainTimerDisplay.text = "GAME OVER";
@@ -93,24 +97,32 @@ public class GameManager : MonoBehaviour {
 			musicAudioSource.pitch = 0.5f; // slow down the music
 	}
 	
-	void BeatLevel() {
-		// game is over
-		gameIsOver = true;
+	public void BeatLevel() {
+		if (boss != null && !gameIsOver) {
+			boss.GetComponent<Animator>().SetTrigger("Entrar");
+			if (musicAudioSource)
+				musicAudioSource.pitch = 1.2f; // slow up the music
+			
+			Destroy(mainGrid);
+		} else {
+			// game is over
+			gameIsOver = true;
 
-		// repurpose the timer to display a message to the player
-		// mainTimerDisplay.text = "LEVEL COMPLETE";
+			// repurpose the timer to display a message to the player
+			// mainTimerDisplay.text = "LEVEL COMPLETE";
 
-		// activate the gameOverScoreOutline gameObject, if it is set 
-		if (gameOverScoreOutline)
-			gameOverScoreOutline.SetActive (true);
+			// activate the gameOverScoreOutline gameObject, if it is set 
+			if (gameOverScoreOutline)
+				gameOverScoreOutline.SetActive (true);
 
-		// activate the nextLevelButtons gameObject, if it is set 
-		if (nextLevelButtons)
-			nextLevelButtons.SetActive (true);
-		
-		// reduce the pitch of the background music, if it is set 
-		if (musicAudioSource)
-			musicAudioSource.pitch = 0.5f; // slow down the music
+			// activate the nextLevelButtons gameObject, if it is set 
+			if (nextLevelButtons)
+				nextLevelButtons.SetActive (true);
+			
+			// reduce the pitch of the background music, if it is set 
+			if (musicAudioSource)
+				musicAudioSource.pitch = 0.5f; // slow down the music
+		}
 	}
 
 	// public function that can be called to update the score or time

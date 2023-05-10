@@ -16,12 +16,6 @@ public class ComportamentoAlvo : MonoBehaviour
 	// quando colidir com outro gameObject...
 	void OnCollisionEnter (Collision newCollision)
 	{
-		// não faça nada se houver um game manager e o jogo já acabou
-		if (GameManager.gm) {
-			if (GameManager.gm.gameIsOver)
-				return;
-		}
-
 		// Se foi atingido por um projétil...
 		if (newCollision.gameObject.tag == "Projetil") {
 			if (prefabExplosao) {
@@ -29,22 +23,14 @@ public class ComportamentoAlvo : MonoBehaviour
 				Instantiate (prefabExplosao, transform.position, transform.rotation);
 			}
 
+			Destroy (newCollision.gameObject);
+			Destroy (gameObject);
+
 			// se o game manager existir, altere o tempo e placar conforme o alvo
 			if (GameManager.gm) {
-				GameManager.gm.targetHit (pontuacao, tempoExtra);
+				if (!GameManager.gm.gameIsOver)
+					GameManager.gm.targetHit (pontuacao, tempoExtra);
 			}
-				
-            Destroy (newCollision.gameObject);
-			this.GetComponent<Animator>().SetTrigger("Exit");
-			// destroyTime = Time.time + 3;
 		}
 	}
-
-	public void AlertObservers(string message)
-    {
-        if (message.Equals("AnimationEnded"))
-        {
-			Destroy (gameObject);
-        }
-    }
 }
