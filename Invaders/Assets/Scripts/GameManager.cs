@@ -99,7 +99,8 @@ public class GameManager : MonoBehaviour {
 	
 	public void BeatLevel() {
 		if (boss != null && !gameIsOver) {
-			boss.GetComponent<Animator>().SetTrigger("Entrar");
+			boss.GetComponent<ComportamentoBoss>().enter();
+
 			if (musicAudioSource)
 				musicAudioSource.pitch = 1.2f; // slow up the music
 			

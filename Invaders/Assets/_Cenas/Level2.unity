@@ -1291,8 +1291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   canBeatLevel: 1
-  beatLevelScore: 1
-  startTime: 30
+  beatLevelScore: 16
+  startTime: 35
   mainScoreDisplay: {fileID: 1016992231}
   mainTimerDisplay: {fileID: 1691441197}
   gameOverScoreOutline: {fileID: 0}
@@ -1301,7 +1301,7 @@ MonoBehaviour:
   playAgainButtons: {fileID: 984047648}
   playAgainLevelToLoad: Level1
   nextLevelButtons: {fileID: 984047648}
-  nextLevelToLoad: Level1
+  nextLevelToLoad: Title screen
   boss: {fileID: 2889692174583101997}
   mainGrid: {fileID: 331130199}
 --- !u!4 &1325216225
@@ -2586,6 +2586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lives: 3
   prefabExplosao: {fileID: 287621167525941296, guid: fb1180e0b06da49b2b6ca385ab205499, type: 3}
+  rotate: 0
 --- !u!4 &2969990071850574927
 Transform:
   m_ObjectHideFlags: 0
@@ -3724,6 +3725,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 940372208281076483, guid: fd07d35a82cd14803bc48762b0d8d2ed, type: 3}
+      propertyPath: m_Text
+      value: restart game
+      objectReference: {fileID: 0}
+    - target: {fileID: 3251381276792062130, guid: fd07d35a82cd14803bc48762b0d8d2ed, type: 3}
+      propertyPath: m_Text
+      value: restart game
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732808417075975772, guid: fd07d35a82cd14803bc48762b0d8d2ed, type: 3}
+      propertyPath: m_Text
+      value: you win
+      objectReference: {fileID: 0}
     - target: {fileID: 8732808417688375337, guid: fd07d35a82cd14803bc48762b0d8d2ed, type: 3}
       propertyPath: m_Name
       value: PlayAgain
@@ -3771,6 +3784,10 @@ PrefabInstance:
     - target: {fileID: 8732808417688375339, guid: fd07d35a82cd14803bc48762b0d8d2ed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732808418203337738, guid: fd07d35a82cd14803bc48762b0d8d2ed, type: 3}
+      propertyPath: m_Text
+      value: you win
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd07d35a82cd14803bc48762b0d8d2ed, type: 3}

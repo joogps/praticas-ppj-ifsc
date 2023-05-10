@@ -9,7 +9,13 @@ public class ComportamentoBoss : MonoBehaviour
 	// explode quando atingido?
 	public GameObject prefabExplosao;
 
-	private float destroyTime;
+	public bool rotate = false;
+
+	void Update() {
+		if (rotate) {
+			transform.RotateAround(Vector3.zero, Vector3.up, 2 * Time.deltaTime);
+		}
+	}
 
 	// quando colidir com outro gameObject...
 	void OnCollisionEnter (Collision newCollision)
@@ -36,11 +42,12 @@ public class ComportamentoBoss : MonoBehaviour
 		}
 	}
 
-	public void AlertObservers(string message)
-    {
-        if (message.Equals("AnimationEnded"))
-        {
-			Destroy (gameObject);
-        }
-    }
+	public void enter() {
+		GetComponent<Animator>().SetTrigger("Entrar");
+		Invoke("startRotating", 5.0f);
+	}
+
+	void startRotating() {
+		rotate = true;
+	}
 }

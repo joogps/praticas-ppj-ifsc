@@ -4817,5 +4817,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df07de1b9960449dca08c7a078db1f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeOut: 1
+  timeOut: 5
   detachChildren: 0

@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 998933271389986519, guid: a7030fec0fc3f4fe68c7306f85111cf7, type: 3}
       propertyPath: m_Name
-      value: Boss explosion
+      value: Boss explosion Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2880520260635430497, guid: a7030fec0fc3f4fe68c7306f85111cf7, type: 3}
       propertyPath: m_RootOrder
@@ -54,6 +54,10 @@ PrefabInstance:
     - target: {fileID: 2880520260635430497, guid: a7030fec0fc3f4fe68c7306f85111cf7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058966476097877430, guid: a7030fec0fc3f4fe68c7306f85111cf7, type: 3}
+      propertyPath: timeOut
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4409007293697422290, guid: a7030fec0fc3f4fe68c7306f85111cf7, type: 3}
       propertyPath: lengthInSec

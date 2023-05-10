@@ -11,7 +11,7 @@ public class ComportamentoAlvo : MonoBehaviour
 	// explode quando atingido?
 	public GameObject prefabExplosao;
 
-	private float destroyTime;
+	private bool canHit = true;
 
 	// quando colidir com outro gameObject...
 	void OnCollisionEnter (Collision newCollision)
@@ -27,9 +27,11 @@ public class ComportamentoAlvo : MonoBehaviour
 			Destroy (gameObject);
 
 			// se o game manager existir, altere o tempo e placar conforme o alvo
-			if (GameManager.gm) {
-				if (!GameManager.gm.gameIsOver)
+			if (GameManager.gm && canHit) {
+				if (!GameManager.gm.gameIsOver) {
 					GameManager.gm.targetHit (pontuacao, tempoExtra);
+					canHit = false;
+				}
 			}
 		}
 	}
