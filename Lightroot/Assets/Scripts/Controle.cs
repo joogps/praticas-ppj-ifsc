@@ -15,6 +15,9 @@ public class Controle : MonoBehaviour
     private bool noChao;
     private Animator animator;
 
+    public GameObject bulletPrefab;
+    public float bulletVelocity = 5f;
+
     // Use this for initialization
     void Start()
     {
@@ -25,7 +28,6 @@ public class Controle : MonoBehaviour
     void Update()
     {
         moveJogador();
-        Debug.Log("TESTE");
     }
 
     private void LateUpdate()
@@ -51,7 +53,7 @@ public class Controle : MonoBehaviour
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * velocidade,
                                                                       gameObject.GetComponent<Rigidbody2D>().velocity.y);
 
-        Physics2D.IgnoreLayerCollision(this.gameObject.layer, LayerMask.NameToLayer("Ground"),
+        Physics2D.IgnoreLayerCollision(this.gameObject.layer, LayerMask.NameToLayer("Platform"),
                                        (gameObject.GetComponent<Rigidbody2D>().velocity.y > 0.0f));
 
         // ANIMAÇAO
@@ -59,8 +61,6 @@ public class Controle : MonoBehaviour
 
         if (moveX != 0)
         {
-
-            Debug.Log("TRIGGERRR");
             animator.SetBool("Correndo", true);
         }
         else
@@ -70,7 +70,27 @@ public class Controle : MonoBehaviour
     }
 
     void ataca(){
-        animator.SetTrigger("Ataque");
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 sourcePos = transform.position;
+
+            sourcePos.y-= 0.5f;
+
+            Vector2 direction = (Vector2)((worldMousePos - sourcePos));
+            direction.Normalize();
+
+            // Creates the bullet locally
+            GameObject bullet = (GameObject)Instantiate(
+                                    bulletPrefab,
+                                    transform.position + (Vector3)(direction * 0.5f),
+                                    Quaternion.identity);
+            bullet.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90);
+
+
+            // Adds velocity to the bullet
+            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletVelocity;
+        }
     }
 
     void pula(){

@@ -21,7 +21,6 @@ public class IAInimigoRonda : MonoBehaviour {
 	public float espera = 2f; // tempo de espera no ponto de parada
 
 	public bool loop = true; // volta ao início após último ponto?
-    public bool atacando = false;
 
 	private Transform transform;
 	int i = 0;		// indice do vetor pontos
@@ -54,9 +53,8 @@ public class IAInimigoRonda : MonoBehaviour {
                     seMovendo = true;
                 }
             }
-            if (!atacando){
-                movimenta();
-            }
+            
+			movimenta();
 		}
 	}
 
@@ -67,15 +65,11 @@ public class IAInimigoRonda : MonoBehaviour {
 			// move até o próximo ponto
 			transform.position = Vector3.MoveTowards(transform.position, pontos[i].transform.position, velocidade * Time.deltaTime);
 
-			//animação
-			animator.SetBool("Andando",true);
-
 			// Se o inimigo chegou no desrino, espera
             if(Vector3.Distance(pontos[i].transform.position, transform.position) <= 0.1) {
 				i++;
 				proxTempo = Time.time + espera;
 				seMovendo = false;
-				animator.SetBool("Andando",false);
 			}
 
 			// i volta para 0 se passou do limite ou paramos de nos mover se não há loop
@@ -88,19 +82,9 @@ public class IAInimigoRonda : MonoBehaviour {
 		}
 	}
 
-    void OnTriggerStay2D(Collider2D outro)
-    {
-        if (outro.gameObject.tag == "Player")
-        {
-            ataca();
+	void OnCollisionEnter2D(Collision2D collision){
+        if (collision.collider.tag == "Player"){
+            collision.collider.gameObject.GetComponent<Saude>().dano(1);
         }
-	}
-
-    public void ataca()
-    {
-        if (!atacando)
-        {
-            animator.SetTrigger("Ataque");
-        }
-	}
+    }
 }
