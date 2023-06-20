@@ -1,57 +1,111 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Controle : MonoBehaviour
 {
-    public int sprintSpeed = 10;
-    public int jumpStrength = 125;
+
+    public int velocidade = 10;
+    public int forcaDoPulo = 1250;
     public Transform terra;
     public LayerMask chao;
 
     private float moveX;
-    private bool flipped = true;
-    private bool grounded = true;
+    private bool direita = true;
+    private bool noChao;
+    private Animator animator;
 
-    // Start is called before the first frame update
+    // Use this for initialization
     void Start()
     {
-        
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        move();
-        GetComponent<Rigidbody2D>().velocity = new Vector2(moveX*sprintSpeed, GetComponent<Rigidbody2D>().velocity.y);
-        
-        // Physics2D.IgnoreLayerCollision(this.gameObject.layer, layerMask)
+        moveJogador();
+        Debug.Log("TESTE");
     }
 
-    void LateUpdate() {
-        flip();
+    private void LateUpdate()
+    {
+        viraJogador();
     }
 
-    void move() {
+    void moveJogador()
+    {
+        // CONTROLES
         moveX = Input.GetAxis("Horizontal");
-        grounded = Physics2D.Linecast(transform.position, terra.position, chao);
-        if (Input.GetButtonDown("Jump") && grounded) {
-            jump();
+        noChao = Physics2D.Linecast(transform.position, terra.position, chao);
+        if (Input.GetButtonDown("Fire1"))
+        {
+            ataca();
+        }
+        if (Input.GetButtonDown("Jump") && noChao)
+        {
+            pula();
+        }
+
+        // FÍSICA
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * velocidade,
+                                                                      gameObject.GetComponent<Rigidbody2D>().velocity.y);
+
+        Physics2D.IgnoreLayerCollision(this.gameObject.layer, LayerMask.NameToLayer("Ground"),
+                                       (gameObject.GetComponent<Rigidbody2D>().velocity.y > 0.0f));
+
+        // ANIMAÇAO
+        animator.SetBool("NoChao", noChao);
+
+        if (moveX != 0)
+        {
+
+            Debug.Log("TRIGGERRR");
+            animator.SetBool("Correndo", true);
+        }
+        else
+        {
+            animator.SetBool("Correndo", false);
         }
     }
 
-    void jump() {
-        GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpStrength);
+    void ataca(){
+        animator.SetTrigger("Ataque");
     }
 
-    void flip() {
-        if (moveX != 0) {
-            flipped = moveX > 0;
+    void pula(){
+        GetComponent<Rigidbody2D>().AddForce(Vector2.up * forcaDoPulo);
+        animator.SetTrigger("Pula");
+    }
+
+    void viraJogador()
+    {
+        if (moveX > 0){
+            direita = true;
         }
-        Vector2 scale = transform.localScale;
-        if ((scale.x > 0 && !flipped) || (scale.x < 0 && flipped)) {
-            scale.x*= -1;
-            transform.localScale = scale;
+        else if(moveX < 0){
+            direita = false;
+        }
+        Vector2 escala = transform.localScale;
+        if((escala.x > 0 && !direita) || (escala.x < 0 && direita)){
+            escala.x = escala.x * -1;
+            transform.localScale = escala;
         }
     }
+
+	// Código da plataforma movel
+	void OnCollisionEnter2D(Collision2D outro)
+	{
+        if(outro.gameObject.tag=="PlataformaMovel"){
+            this.transform.parent = outro.transform;
+        }
+	}
+
+	private void OnCollisionExit2D(Collision2D outro)
+	{
+        if (outro.gameObject.tag == "PlataformaMovel")
+        {
+            this.transform.parent = null;
+        }
+	}
 }
