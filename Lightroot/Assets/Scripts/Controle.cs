@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Controle : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Controle : MonoBehaviour
     public int forcaDoPulo = 1250;
     public Transform terra;
     public LayerMask chao;
+    public LayerMask plataforma;
 
     private float moveX;
     private bool direita = true;
@@ -17,6 +19,8 @@ public class Controle : MonoBehaviour
 
     public GameObject bulletPrefab;
     public float bulletVelocity = 5f;
+    public int bullets = 15;
+    public Text bulletsDisplay;
 
     // Use this for initialization
     void Start()
@@ -39,7 +43,7 @@ public class Controle : MonoBehaviour
     {
         // CONTROLES
         moveX = Input.GetAxis("Horizontal");
-        noChao = Physics2D.Linecast(transform.position, terra.position, chao);
+        noChao = Physics2D.Linecast(transform.position, terra.position, chao) || Physics2D.Linecast(transform.position, terra.position, plataforma);
         if (Input.GetButtonDown("Fire1"))
         {
             ataca();
@@ -70,7 +74,7 @@ public class Controle : MonoBehaviour
     }
 
     void ataca(){
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && bullets > 0)
         {
             Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 sourcePos = transform.position;
@@ -90,7 +94,14 @@ public class Controle : MonoBehaviour
 
             // Adds velocity to the bullet
             bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletVelocity;
+
+            bullets--;
+            updateText();
         }
+    }
+
+    void updateText() {
+        bulletsDisplay.text = "x" + bullets;
     }
 
     void pula(){
