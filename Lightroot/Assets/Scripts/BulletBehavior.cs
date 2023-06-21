@@ -17,6 +17,7 @@ public class BulletBehavior : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D collision){
         if (collision.collider.tag == "Inimigo"){
+            Destroy(gameObject);
             collision.collider.gameObject.GetComponent<Saude>().dano(1);
         }
 

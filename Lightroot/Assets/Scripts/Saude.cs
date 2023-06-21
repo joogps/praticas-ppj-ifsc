@@ -13,6 +13,7 @@ public class Saude : MonoBehaviour
     public int saude;
     private Animator animator;
     public Text text;
+    public GameObject tooBad;
 
     // Use this for initialization
     void Start()
@@ -27,18 +28,22 @@ public class Saude : MonoBehaviour
 
     public void dano(int x)
     {
-        if (saude <= 1)
+        saude -= x;
+
+        if (gameObject.tag == "Player")
         {
-            morto = true;
-            animator.SetTrigger("Morte");
+            updateText();
+        }
+
+        if (saude <= 0)
+        {
             if (gameObject.tag == "Player")
             {
-                StartCoroutine(morre());
+                morre();
             } else {
                 Destroy(gameObject);
             }
         } else if (!invencivel) {
-            saude -= x;
             animator.SetTrigger("Dano");
 
             if (gameObject.tag == "Player") {
@@ -46,22 +51,30 @@ public class Saude : MonoBehaviour
                 StartCoroutine(desinvencivel(4));
             }
         }
-
-        if (gameObject.tag == "Player")
-        {
-            updateText();
-        }
     }
 
     public void danoMax()
     {
         saude = 0;
-        morto = true;
-        // animator.SetTrigger("Morte");
         if (gameObject.tag == "Player")
         {  // Só reicicia a fase se quem morreu foi o jogador.
-            StartCoroutine(morre());
+            morre();
         }
+    }
+
+    public void heal() {
+        if (saude < 3) {
+            saude++;
+            updateText();
+        }
+    }
+
+    public void morre() {
+        morto = true;
+        animator.SetTrigger("Morte");
+        tooBad.SetActive(true);
+        gameObject.GetComponent<Controle>().enabled = false;
+        StartCoroutine(reload());
     }
 
     public void updateText() {
@@ -72,9 +85,9 @@ public class Saude : MonoBehaviour
         text.text = hearts;
     }
 
-    IEnumerator morre()
+    IEnumerator reload()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(4.0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

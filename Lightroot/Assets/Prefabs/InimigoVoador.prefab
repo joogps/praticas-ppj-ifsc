@@ -48,7 +48,6 @@ GameObject:
   - component: {fileID: 3618331073296893573}
   - component: {fileID: 3618331073296893572}
   - component: {fileID: 3618331073296893595}
-  - component: {fileID: 3618331073296893574}
   - component: {fileID: 3618331073296893568}
   - component: {fileID: 3618331073296893575}
   - component: {fileID: 3756494880049458670}
@@ -133,7 +132,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3618331073296893592}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -183,22 +182,6 @@ MonoBehaviour:
   velocidade: 5
   espera: 2
   loop: 1
---- !u!114 &3618331073296893574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3618331073296893592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4276c89c8efb34a2c9686f871a1836ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  morto: 0
-  invencivel: 0
-  saude: 1
-  text: {fileID: 0}
 --- !u!199 &3618331073296893568
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4985,8 +4968,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   morto: 0
   invencivel: 0
-  saude: 0
+  saude: 2
   text: {fileID: 0}
+  tooBad: {fileID: 0}
 --- !u!95 &3356149049849930714
 Animator:
   serializedVersion: 3

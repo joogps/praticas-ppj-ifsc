@@ -124,6 +124,11 @@ public class Controle : MonoBehaviour
         }
     }
 
+    public void reload() {
+        bullets = 15;
+        updateText();
+    }
+
 	// Código da plataforma movel
 	void OnCollisionEnter2D(Collision2D outro)
 	{
