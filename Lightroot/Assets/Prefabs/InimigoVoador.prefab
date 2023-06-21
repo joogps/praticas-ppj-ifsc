@@ -179,8 +179,8 @@ MonoBehaviour:
   - {fileID: 3618331074057281402}
   - {fileID: 5503177352363895415}
   - {fileID: 5503177352408074227}
-  velocidade: 5
-  espera: 2
+  velocidade: 8
+  espera: 1
   loop: 1
 --- !u!199 &3618331073296893568
 ParticleSystemRenderer:
@@ -4968,7 +4968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   morto: 0
   invencivel: 0
-  saude: 2
+  saude: 3
   text: {fileID: 0}
   tooBad: {fileID: 0}
 --- !u!95 &3356149049849930714
