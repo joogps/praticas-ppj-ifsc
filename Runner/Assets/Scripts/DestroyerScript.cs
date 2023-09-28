@@ -9,7 +9,7 @@ public class DestroyerScript : MonoBehaviour
     {
         if (outro.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("GameOver");
+            outro.gameObject.GetComponent<Placar>().gameOver();
             return;
         }
         

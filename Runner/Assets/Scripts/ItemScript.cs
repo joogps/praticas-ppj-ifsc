@@ -15,6 +15,13 @@ public class ItemScript : MonoBehaviour
         {
             outro.gameObject.GetComponent<Placar>().pegarItem();
             Destroy(gameObject);
+        } else if (outro.gameObject.tag == "Magnet")
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player.GetComponent<Placar>().ima) {
+                player.GetComponent<Placar>().pegarItem();
+                Destroy(gameObject);
+            }
         }
     }
 }

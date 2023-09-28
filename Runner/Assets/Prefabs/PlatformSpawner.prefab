@@ -51,5 +51,7 @@ MonoBehaviour:
   objetos:
   - {fileID: 674194688366427705, guid: f602d1274ab85465f9323f499dc43beb, type: 3}
   - {fileID: 2370058098865023721, guid: b64545fff281d9145b8bb5f430dbe34e, type: 3}
+  powerUps:
+  - {fileID: 1735512715617940350, guid: 9fc26ea137d7a4636b0bc5f7ea57c7db, type: 3}
   spawnMin: 1
   spawnMax: 3
