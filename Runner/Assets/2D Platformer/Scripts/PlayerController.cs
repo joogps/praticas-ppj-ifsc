@@ -15,6 +15,7 @@ namespace Platformer
         public bool deathState = false;
 
         private bool isGrounded;
+        private bool doubleJump;
         public Transform groundCheck;
 
         private Rigidbody2D rigidbody;
@@ -40,9 +41,11 @@ namespace Platformer
             transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, movingSpeed * Time.deltaTime);
             animator.SetInteger("playerState", 1); // Turn on run animation
             
-            if(Input.GetKeyDown(KeyCode.Space) && isGrounded )
+            if(Input.GetKeyDown(KeyCode.Space) && (isGrounded || doubleJump))
             {
                 rigidbody.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+                doubleJump = isGrounded;
+                
             }
             if (!isGrounded)animator.SetInteger("playerState", 2); // Turn on jump animation
 
