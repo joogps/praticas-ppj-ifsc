@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Magnet
+  - Shard
   layers:
   - Default
   - TransparentFX
