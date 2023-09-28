@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DestroyerScript : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class DestroyerScript : MonoBehaviour
     {
         if (outro.gameObject.tag == "Player")
         {
-            Debug.Break();
+            SceneManager.LoadScene("GameOver");
             return;
         }
         

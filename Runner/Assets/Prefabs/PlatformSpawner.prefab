@@ -48,5 +48,8 @@ MonoBehaviour:
   - {fileID: 3336273420963347872, guid: 5cb95a20944b1a1448d9c1e52ff8d9c0, type: 3}
   - {fileID: 4130244503062517944, guid: a5fce91d1a94437419759aa23caef77b, type: 3}
   - {fileID: 5877276053528799130, guid: 70943c280278c3b45b8a28b7bd073791, type: 3}
+  objetos:
+  - {fileID: 674194688366427705, guid: f602d1274ab85465f9323f499dc43beb, type: 3}
+  - {fileID: 2370058098865023721, guid: b64545fff281d9145b8bb5f430dbe34e, type: 3}
   spawnMin: 1
   spawnMax: 3
