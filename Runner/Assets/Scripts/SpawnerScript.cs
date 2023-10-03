@@ -19,11 +19,11 @@ public class SpawnerScript : MonoBehaviour
     {
         Instantiate(plataformas[Random.Range(0, plataformas.Length)], transform.position, Quaternion.identity);
 
-        int chance = Random.Range(0, 10);
+        int chance = Random.Range(0, 30);
         if (chance < 1)
         {
-            Instantiate(objetos[Random.Range(0, powerUps.Length)], transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
-        } else if (chance < 3) {
+            Instantiate(powerUps[Random.Range(0, powerUps.Length)], transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+        } else if (chance < 10) {
             Instantiate(objetos[Random.Range(0, objetos.Length)], transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
         }
 

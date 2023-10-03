@@ -28,6 +28,7 @@ public class Placar: MonoBehaviour
     public void pegarItem()
     {
         itens++;
+        placar += 100;
         mostradorItens.text = itens.ToString();
     }
 
