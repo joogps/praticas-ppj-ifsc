@@ -578,15 +578,16 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Ice Clipart PNG por 588ku de PNGTree
+  m_Text: 'Arctic Run por Joao Gabriel
 
 
-    Magnet 3D Illustration PNG
-    por anwar sadad de Vecteezy
+    Ice Clipart PNG por 588ku de PNGTree
 
+    Magnet
+    3D Illustration PNG por anwar sadad de Vecteezy
 
-    Nature Landscapes Free Pixel Art por CraftPix
-    de Itch.io'
+    Nature Landscapes Free Pixel
+    Art por CraftPix de Itch.io'
 --- !u!222 &1962845904
 CanvasRenderer:
   m_ObjectHideFlags: 0
